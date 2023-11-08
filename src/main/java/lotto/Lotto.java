@@ -114,13 +114,20 @@ public class Lotto {
         }
 
         //유효성 검사
-        Lotto(numList);
+        Lotto(numList);   ///////////유효성 갓이 1~45 사이인지 확인해야함..
 
         sc.close();
         return numList;
     }
+    // 추첨자로부터 보너스 번호를 입력 받는 함수
+    public int getBonusNum(){
+        Scanner sc = new Scanner(System.in);
+        int bonusNum = sc.nextInt();
 
+        //////////값 1~45 사이인지 유효성 검사하기..
 
+        return bonusNum;
+    }
 
 
 }
