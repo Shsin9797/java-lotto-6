@@ -23,8 +23,70 @@ public class Lotto {
 
     ///// 도메인 부분
 
+    //돈받으면 몇개 살지 정하는 함수
+    public int setBuyCnt(int money){  /////////예외처리해주기
+        int cnt = money /1000 ;
+        return cnt;
+    }
+
+    // 랜덤 로또값 추출
+    public List<Integer[]> makeLotto(int LottoCnt){
+        List<integer[]> lottoList = new ArrayList<Integer[]>();
+
+        for(int i =0 ; i <LottoCnt ; i++){
+
+            //로또값 담을 리스트
+            int[] lotto = new int[6] ;
+            //로또값 랜덤 생성 6개
+            for(int j = 0 ; j <6 ; j++){
+                lotto[j] = Random.pickUniqueNumbersInRange(1,45);
+            }
+            //로또값 담기
+            lottoList.add(lotto);
+
+        }
+        return lottoList;
+
+    }
+
+
+
+
     ///// UI 부분  (입출력 받음)
+
+
+    //몇개 샀는지 출력하는 함수
+    public void printBuyCnt(int cnt){
+        System.out.println(cnt+개를 구매했습니다.);
+    }
+
+    // 로또값을 출력하는 함수
+    public void printLotto(List<Integer[]> lottoList){
+        for(int[] lotto : lottoList){
+            System.out.print("[");
+            printLottoNum();
+            System.out.println("]");
+        }
+
+    }
+
+    //숫자 출력하는 함수
+    public void printLottoNum(int[] lotto) {
+        for (int i = 0; i < lotto.length; i++) {
+            System.out.print(lotto[i]);
+
+            if (i >= lotto.length -1 ){
+                break;
+            }
+            System.out.print(", ");
+
+        }
+    }
+
+
+
     //이용자로부터 로또 구입 금액 입력받는 함수
+    public
     public int getMoney(){
         Scanner sc = new Scanner(System.in);
         System.out.println("구입금액을 입력해 주세요.");
