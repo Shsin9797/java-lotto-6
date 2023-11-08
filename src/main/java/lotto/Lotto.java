@@ -49,8 +49,30 @@ public class Lotto {
 
     }
 
+    // 로또 int[] 의  같은 값 개수 세기 ( 입력값 오름차순으로 정렬해줘야함..)
+    public int SameNumCnt(int[] myLotto , int[] realLotto){
+        int numCnt =0;
+        for (int i =0 ; i< myLotto.length; i++){
+            for(int j = 0 ; j < realLotto; j++) {
+                numCnt= updateCnt(myLotto[i],realLotto[j],numCnt);
+            }
+
+        }
+        return numCnt;
+    }
+
+    //로또값이 같으면 개수를 증가시켜줌
+    public int updateCnt(int my, int real, int cnt){
+        if (my == real) {
+            cnt++;
+
+        }
+        return cnt ;
 
 
+    }
+
+///////////////////////////////////////////////////////////
 
     ///// UI 부분  (입출력 받음)
 
