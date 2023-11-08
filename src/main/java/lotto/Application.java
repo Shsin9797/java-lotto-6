@@ -8,12 +8,12 @@ public class Application {
             // 돈받기
             int money = l.getMoney();
             //몇개살지 정하기
-
+            int lottoCnt = l.setBuyCnt(money);
             //출력
-
+            printBuyCnt(lottoCnt);
             //그 개수만큼 구매하여 리스트 출력
-
-            // 출력
+            List<integer[]> myLotto = makeLotto(lottoCnt);
+            printLotto(myLotto);
 
 
             //당첨번호 받기

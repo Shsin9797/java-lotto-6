@@ -64,7 +64,7 @@ public class Lotto {
     public void printLotto(List<Integer[]> lottoList){
         for(int[] lotto : lottoList){
             System.out.print("[");
-            printLottoNum();
+            printLottoNum(lotto);
             System.out.println("]");
         }
 
