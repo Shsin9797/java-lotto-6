@@ -1,18 +1,23 @@
 package lotto;
+import lotto.Lotto.PlayLotto;
+
+import java.util.List;
 public class Application {
 
         // TODO: 프로그램 구현
         public static void main(String[] args) {
 
-            Lotto l = new Lotto();
+            //Lotto l = new Lotto();
+
+
             // 돈받기
-            int money = l.getMoney();
+            int money = getMoney();
             //몇개살지 정하기
-            int lottoCnt = l.setBuyCnt(money);
+            int lottoCnt = setBuyCnt(money);
             //출력
-            l.printBuyCnt(lottoCnt);
+            printBuyCnt(lottoCnt);
             //그 개수만큼 구매하여 리스트 출력
-            List<integer[]> myLotto = l.makeLotto(lottoCnt);
+            List<List<Integer>> myLotto = l.makeLotto(lottoCnt);
             l.printLotto(myLotto);
 
 

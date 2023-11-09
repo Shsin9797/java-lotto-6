@@ -1,14 +1,19 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Lotto {
     private final List<Integer> numbers;
 
-    //로또 값의 유효성 확인하고 객체의 필드값 설정하는 코드
+    //로또 값의 유효성 확인하고 객체의 필드값 설정하는 생성자
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+            validate(numbers);
         this.numbers = numbers;
     }
 
@@ -20,9 +25,11 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-
+    public class PlayLotto{
     ///// 도메인 부분
+    public PlayLotto(){
 
+    }
     //돈받으면 몇개 살지 정하는 함수
     public int setBuyCnt(int money){  /////////예외처리해주기
         int cnt = money /1000 ;
@@ -30,30 +37,20 @@ public class Lotto {
     }
 
     // 랜덤 로또값 추출
-    public List<Integer[]> makeLotto(int LottoCnt){
-        List<integer[]> lottoList = new ArrayList<Integer[]>();
-
-        for(int i =0 ; i <LottoCnt ; i++){
-
-            //로또값 담을 리스트
-            int[] lotto = new int[6] ;
-            //로또값 랜덤 생성 6개
-            for(int j = 0 ; j <6 ; j++){
-                lotto[j] = Random.pickUniqueNumbersInRange(1,45);
-            }
-            //로또값 담기
-            lottoList.add(lotto);
-
+    public static Lotto generate(int count) {
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            numbers.addAll(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
-        return lottoList;
-
+        return new Lotto(numbers);
     }
+
 
     // 로또 int[] 의  같은 값 개수 세기 ( 입력값 오름차순으로 정렬해줘야함..)
     public int SameNumCnt(int[] myLotto , int[] realLotto){
         int numCnt =0;
         for (int i =0 ; i< myLotto.length; i++){
-            for(int j = 0 ; j < realLotto; j++) {
+            for(int j = 0 ; j < realLotto.length; j++) {
                 numCnt= updateCnt(myLotto[i],realLotto[j],numCnt);
             }
 
@@ -79,12 +76,12 @@ public class Lotto {
 
     //몇개 샀는지 출력하는 함수
     public void printBuyCnt(int cnt){
-        System.out.println(cnt+개를 구매했습니다.);
+        System.out.println(cnt+"개를 구매했습니다.");
     }
 
     // 로또값을 출력하는 함수
-    public void printLotto(List<Integer[]> lottoList){
-        for(int[] lotto : lottoList){
+    public void printLotto(List<List<Integer>> lottoList){
+        for(List<Integer> lotto : lottoList){
             System.out.print("[");
             printLottoNum(lotto);
             System.out.println("]");
@@ -93,11 +90,11 @@ public class Lotto {
     }
 
     //숫자 출력하는 함수
-    public void printLottoNum(int[] lotto) {
-        for (int i = 0; i < lotto.length; i++) {
-            System.out.print(lotto[i]);
+    public void printLottoNum(List<Integer> lotto) {
+        for (int i = 0; i < lotto.size(); i++) {
+            System.out.print(lotto.get(i));
 
-            if (i >= lotto.length -1 ){
+            if (i >= lotto.size()-1 ){
                 break;
             }
             System.out.print(", ");
@@ -108,7 +105,7 @@ public class Lotto {
 
 
     //이용자로부터 로또 구입 금액 입력받는 함수
-    public
+
     public int getMoney(){
         Scanner sc = new Scanner(System.in);
         System.out.println("구입금액을 입력해 주세요.");
@@ -136,7 +133,7 @@ public class Lotto {
         }
 
         //유효성 검사
-        Lotto(numList);   ///////////유효성 갓이 1~45 사이인지 확인해야함..
+        new Lotto(numList);   ///////////유효성 갓이 1~45 사이인지 확인해야함..
 
         sc.close();
         return numList;
@@ -151,5 +148,5 @@ public class Lotto {
         return bonusNum;
     }
 
-
+    }//PalyLotto
 }
